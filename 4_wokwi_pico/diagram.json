@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "author": "Kitchen Safety System",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-pi-pico", "id": "pico", "top": 0, "left": 0 },
+    { "type": "wokwi-pir-motion-sensor", "id": "pir", "top": -120, "left": 200 },
+    { "type": "wokwi-potentiometer", "id": "smoke", "top": -120, "left": 50, "attrs": { "label": "Smoke Level" } },
+    { "type": "wokwi-neopixel-ring", "id": "ring", "top": -120, "left": -150, "attrs": { "pixels": "8" } },
+    { "type": "wokwi-buzzer", "id": "buz", "top": 180, "left": 50 },
+    { "type": "wokwi-pushbutton", "id": "btn", "top": 180, "left": 200, "attrs": { "label": "Timer" } },
+    { "type": "wokwi-lcd1602", "id": "lcd", "top": 180, "left": -200, "attrs": { "pins": "i2c" } }
+  ],
+  "connections": [
+    ["pico:GP16", "pir:OUT", "green", ["v0"]],
+    ["pico:3V3", "pir:VCC", "red", ["v0"]],
+    ["pico:GND.1", "pir:GND", "black", ["v0"]],
+    ["pico:GP26", "smoke:SIG", "green", ["v0"]],
+    ["pico:3V3", "smoke:VCC", "red", ["v0"]],
+    ["pico:GND.1", "smoke:GND", "black", ["v0"]],
+    ["pico:GP0", "ring:DIN", "green", ["v0"]],
+    ["pico:VBUS", "ring:VCC", "red", ["v0"]],
+    ["pico:GND.1", "ring:GND", "black", ["v0"]],
+    ["pico:GP15", "buz:1", "orange", ["v0"]],
+    ["pico:GND.1", "buz:2", "black", ["v0"]],
+    ["pico:GP14", "btn:1.l", "purple", ["v0"]],
+    ["pico:GND.1", "btn:2.l", "black", ["v0"]],
+    ["pico:GP4", "lcd:SDA", "green", ["v0"]],
+    ["pico:GP5", "lcd:SCL", "yellow", ["v0"]],
+    ["pico:3V3", "lcd:VCC", "red", ["v0"]],
+    ["pico:GND.1", "lcd:GND", "black", ["v0"]]
+  ]
+}

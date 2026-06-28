@@ -1,0 +1,36 @@
+{
+  "version": 1,
+  "author": "Kitchen Safety System",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 0, "left": 0 },
+    { "type": "wokwi-dht22", "id": "dht", "top": -80, "left": 120 },
+    { "type": "wokwi-ds18b20", "id": "temp1", "top": -80, "left": 220, "attrs": { "label": "Fridge" } },
+    { "type": "wokwi-ds18b20", "id": "temp2", "top": -80, "left": 300, "attrs": { "label": "Freezer" } },
+    { "type": "board-ssd1306", "id": "oled", "top": -100, "left": -150 },
+    { "type": "wokwi-buzzer", "id": "buz", "top": 100, "left": 220 },
+    { "type": "wokwi-pushbutton", "id": "btn", "top": 100, "left": 300 },
+    { "type": "wokwi-led", "id": "led1", "top": 100, "left": 120, "attrs": { "color": "red" } }
+  ],
+  "connections": [
+    ["esp:5", "dht:SDA", "green", ["v0"]],
+    ["esp:3V3", "dht:VCC", "red", ["v0"]],
+    ["esp:GND.1", "dht:GND", "black", ["v0"]],
+    ["esp:15", "temp1:DQ", "blue", ["v0"]],
+    ["esp:3V3", "temp1:VCC", "red", ["v0"]],
+    ["esp:GND.1", "temp1:GND", "black", ["v0"]],
+    ["esp:15", "temp2:DQ", "blue", ["v0"]],
+    ["esp:3V3", "temp2:VCC", "red", ["v0"]],
+    ["esp:GND.1", "temp2:GND", "black", ["v0"]],
+    ["esp:21", "oled:SDA", "green", ["v0"]],
+    ["esp:22", "oled:SCL", "yellow", ["v0"]],
+    ["esp:3V3", "oled:VCC", "red", ["v0"]],
+    ["esp:GND.1", "oled:GND", "black", ["v0"]],
+    ["esp:4", "buz:1", "orange", ["v0"]],
+    ["esp:GND.1", "buz:2", "black", ["v0"]],
+    ["esp:2", "btn:1.l", "purple", ["v0"]],
+    ["esp:GND.1", "btn:2.l", "black", ["v0"]],
+    ["esp:13", "led1:A", "red", ["v0"]],
+    ["esp:GND.1", "led1:C", "black", ["v0"]]
+  ]
+}
